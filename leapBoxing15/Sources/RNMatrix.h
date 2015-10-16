@@ -149,12 +149,12 @@ namespace RN
 	
 	inline bool Matrix::operator== (const Matrix &other) const
 	{
-		return IsEqual(other, k::EpsilonFloat);
+		return IsEqual(other, std::numeric_limits<float>::epsilon());
 	}
 	
 	inline bool Matrix::operator!= (const Matrix &other) const
 	{
-		return !IsEqual(other, k::EpsilonFloat);
+		return !IsEqual(other, std::numeric_limits<float>::epsilon());
 	}
 	
 	inline Matrix Matrix::GetInverse() const
@@ -279,7 +279,7 @@ namespace RN
 		Matrix mat;
 		
 		float xFac, yFac;
-		yFac = tanf(arc * k::Pi / 360.0f);
+		yFac = tanf(arc * M_PI / 360.0f);
 		xFac = yFac * aspect;
 		
 		mat.m[0] = 1.0f / xFac;
@@ -297,7 +297,7 @@ namespace RN
 		Matrix mat;
 		
 		float xFac, yFac;
-		yFac = tanf(arc * k::Pi / 360.0f);
+		yFac = tanf(arc * M_PI / 360.0f);
 		xFac = yFac * aspect;
 		
 		mat.m[0] = xFac;
@@ -345,7 +345,7 @@ namespace RN
 		
 		result.y = asin(fmax(fmin(-m[9], 1.0), -1.0));
 		double cy = cos(result.y);
-		if(Math::FastAbs(cy) > k::EpsilonFloat)
+		if(Math::FastAbs(cy) > std::numeric_limits<float>::epsilon())
 		{
 			result.x = atan2(m[8]/cy, m[10]/cy);
 			result.z = atan2(m[1]/cy, m[5]/cy);
@@ -363,7 +363,7 @@ namespace RN
 			}
 		}
 		
-		result *= 180.0f / k::Pi;
+		result *= 180.0f / M_PI;
 		return result;
 	}
 	

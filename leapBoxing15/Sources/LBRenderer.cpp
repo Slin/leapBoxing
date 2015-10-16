@@ -261,7 +261,7 @@ namespace LB
 		return indexBuffer;
 	}
 
-	Renderer::CreateConstantBufferView()
+/*	Renderer::CreateConstantBufferView()
 	{
 		ComPtr<ID3D12Resource> constantBuffer;
 	ConstantBuffer m_constantBufferData;
@@ -289,7 +289,7 @@ namespace LB
 			 ThrowIfFailed(constantBuffer->Map(0, nullptr, reinterpret_cast<void**>(&m_pCbvDataBegin)));
 			 memcpy(m_pCbvDataBegin, &m_constantBufferData, sizeof(m_constantBufferData));
 		}
-	}
+	}*/
 
 	void Renderer::CreateFramebuffers()
 	{
